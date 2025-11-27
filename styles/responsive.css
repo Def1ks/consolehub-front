@@ -6,15 +6,37 @@
 /** Сенсорные устройства **/
 /** Стили для планшетов **/
 @media (max-width: 1100px) {
+    header .burger-icon {
+        display: flex;
+    }
 
+    header .header-actions {
+        display: none;
+    }
+
+    header nav {
+        display: none;
+    }
 }
 
 /** Стили для телефонов **/
 @media (max-width: 800px) {
+    header .logo {
+        font-size: 1.5rem;
+    }
 
+    header .mobile-menu {
+        top: 95px;
+    }
 }
 
 /** Стили для очень маленьких телефонов **/
 @media (max-width: 500px) {
+    header {
+        padding: 20px;
+    }
 
+    header .mobile-menu {
+        top: 85px;
+    }
 }
