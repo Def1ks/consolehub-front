@@ -1,6 +1,12 @@
 /** Стили для пк **/
 @media (max-width: 1440px) {
+    .hero {
+        padding-inline: 0;
+    }
 
+    .hero .gamepad {
+        display: none;
+    }
 }
 
 /** Сенсорные устройства **/
@@ -28,6 +34,19 @@
     header .mobile-menu {
         top: 95px;
     }
+
+    .hero .logo span {
+        font-size: 54px;
+    }
+
+    .hero .branding p {
+        font-size: 20px;
+    }
+
+    .hero .branding a {
+        font-size: 16px;
+        padding: 20px;
+    }
 }
 
 /** Стили для очень маленьких телефонов **/
@@ -38,5 +57,18 @@
 
     header .mobile-menu {
         top: 85px;
+    }
+
+    .hero .logo span {
+        font-size: 36px;
+    }
+
+    .hero .branding p {
+        font-size: 16px;
+    }
+
+    .hero .branding a {
+        font-size: 14px;
+        padding: 12px;
     }
 }

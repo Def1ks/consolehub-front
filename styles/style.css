@@ -29,6 +29,7 @@ header {
     border-radius: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
+    z-index: 10;
 }
 
 header .logo {
@@ -152,7 +153,7 @@ header .mobile-menu {
     width: 90vw;
     left: 0px;
     top: 105px;
-    z-index: 5;
+    z-index: 10;
     padding: 15px;
     padding-left: 40px;
     background-color: rgba(0, 0, 30, 0.65);
@@ -169,9 +170,55 @@ header .mobile-menu ul {
 }
 
 .hero {
-    background-image: url('../img/fon_section_hero.jpg');
+    background-image: url('../img/fon_section_hero.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
     width: 100vw;
+    padding-inline: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.hero .gamepad {
+    width: 400px;
+    height: 400px;
+}
+
+.hero .logo {
+    display: flex;
+}
+
+.hero .logo span {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 80px;
+}
+
+.hero .branding p {
+    color:rgba(255, 255, 255, 1);
+    font-family: var(--font-ui);
+    font-weight: 800;
+    font-size: 34px;
+}
+
+.hero .branding a {
+    text-decoration: none;
+    background: linear-gradient(135deg, #0011ff, #00c8ff);
+    color: rgba(255, 255, 255, 1);
+    font-family: var(--font-ui); 
+    font-weight: 600;
+    font-size: 24px;
+    border-radius: 24px;
+    padding: 15px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    display: inline-block; 
+    transition: all 0.3s ease-in-out; 
+}
+
+.hero .branding a:hover {
+    transform: scale(1.05);
 }
