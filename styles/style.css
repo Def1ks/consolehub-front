@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 1000px;
+    overflow-x: hidden;
 }
 
 header {
@@ -221,4 +221,71 @@ header .mobile-menu ul {
 
 .hero .branding a:hover {
     transform: scale(1.05);
+}
+
+.popular-products {
+    background-color: #1A2B42;
+    width: 100%;
+    padding-inline: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.popular-products .card {
+    background-color: #283D55;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+}
+
+.popular-products .card .text-img .img-card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.popular-products .card .text-img .img-card img {
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.popular-products .card .text-img .img-card img:hover {
+    transform: scale(1.1);
+}
+
+.popular-products .card .text-img h2 { 
+    font-family: var(--font-heading);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 28px;
+    text-align: center;
+}
+
+.popular-products .card a { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    text-decoration: none;
+    background-color: #1A2B42;
+    border-radius: 8px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 1);
+    padding: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.popular-products .card a:hover { 
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
+}
+
+.popular-products .card a:active { 
+    transform: scale(0.95);
 }

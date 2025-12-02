@@ -23,6 +23,19 @@
     header nav {
         display: none;
     }
+
+    .popular-products .card {
+        max-width: 275px;
+    }
+
+    .popular-products .card .text-img h2 { 
+        font-size: 22px;
+    }
+
+    .popular-products .card a { 
+        font-size: 16px;
+        padding: 10px;
+    }
 }
 
 /** Стили для телефонов **/
