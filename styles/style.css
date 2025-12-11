@@ -250,7 +250,8 @@ header .mobile-menu ul {
 }
 
 .popular-products {
-    background-color: #1A2B42;
+    background-color: #01060d;
+    background: linear-gradient(135deg, #0a0c15, #050710);
     width: 100%;
     padding-inline: 10%;
     padding-top: 50px;
@@ -263,6 +264,7 @@ header .mobile-menu ul {
 
 .popular-products .card {
     background-color: #283D55;
+    background-color: #101f33;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
