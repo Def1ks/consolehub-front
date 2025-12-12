@@ -28,11 +28,11 @@
         max-width: 275px;
     }
 
-    .popular-products .card .text-img h2 { 
+    .popular-products .card .text-img p {
         font-size: 22px;
     }
 
-    .popular-products .card a { 
+    .popular-products .card a {
         font-size: 16px;
         padding: 10px;
     }
@@ -72,6 +72,11 @@
         top: 85px;
     }
 
+    .hero .branding .hero-btn {
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+
     .hero .logo span {
         font-size: 36px;
     }
@@ -83,5 +88,9 @@
     .hero .branding a {
         font-size: 14px;
         padding: 12px;
+    }
+
+    .promotions .promotions-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 450px));
     }
 }
