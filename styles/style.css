@@ -177,7 +177,7 @@ header .mobile-menu ul {
 }
 
 .hero {
-    background-image: url('../img/fon_section_hero.png');
+    background-image: url('../img/fon_section_hero.webp');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -539,6 +539,7 @@ footer {
     justify-content: space-between;
     padding-top: 30px;
     padding-bottom: 20px;
+    gap: 1rem;
 }
 
 footer::before {
@@ -562,31 +563,95 @@ footer .logo {
     font-size: 48px;
     font-family: var(--font-heading);
     font-weight: 800;
-    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .footer-column {
     display: flex;
     width: 75%;
-    justify-content: space-between;
-}
-
-.footer-col {
-    display: flex;
     flex-direction: column;
-    width: 150px;
+    align-items: center;
+    gap: 1rem;
 }
 
-.footer-col a {
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-links a {
     text-decoration: none;
-    font-family: var(--font-ui);
     color: rgba(255, 255, 255, 1);
+    font-family: var(--font-ui);
+    border: 2px solid rgba(75, 150, 225, 0.7);
+    width: 90px;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #4bc0e1;
+    text-shadow:
+        0 0 5px rgba(75, 150, 225, 0.7),
+        0 0 10px rgba(75, 150, 225, 0.5),
+        0 0 15px rgba(75, 150, 225, 0.3);
+    box-shadow:
+        0 0 0 2px #4bc0e1,
+        0 0 8px rgba(75, 150, 225, 0.7),
+        0 0 12px rgba(75, 150, 225, 0.5),
+        0 0 16px rgba(75, 150, 225, 0.3);
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.footer-social a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: var(--font-ui);
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: #4bc0e1;
+    text-shadow:
+        0 0 5px rgba(75, 150, 225, 0.7),
+        0 0 10px rgba(75, 150, 225, 0.5),
+        0 0 15px rgba(75, 150, 225, 0.3);
+}
+
+.footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     font-size: 16px;
+}
+
+.footer-contact a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: var(--font-ui);
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-contact a:hover {
+    color: #4bc0e1;
+    text-shadow:
+        0 0 5px rgba(75, 150, 225, 0.7),
+        0 0 10px rgba(75, 150, 225, 0.5),
+        0 0 15px rgba(75, 150, 225, 0.3);
 }
 
 .footer-copyright {
-    text-align: center;
+    color: white;
     font-family: var(--font-ui);
-    color: rgba(255, 255, 255, 1);
-    font-size: 16px;
+    font-size: 14px;
+    text-align: center;
+    margin-inline: 5px;
 }
