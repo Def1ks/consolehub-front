@@ -36,6 +36,14 @@
         font-size: 16px;
         padding: 10px;
     }
+
+    .footer-col {
+        width: 100px;
+    }
+
+    .footer-contact {
+        width: 150px;
+    }
 }
 
 /** Стили для телефонов **/
@@ -60,6 +68,21 @@
         font-size: 16px;
         padding: 20px;
     }
+
+    footer {
+        gap: 1.5rem;
+    }
+
+    .footer-column {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .footer-col {
+        align-items: center;
+    }
+
 }
 
 /** Стили для очень маленьких телефонов **/
@@ -92,5 +115,17 @@
 
     .promotions .promotions-list {
         grid-template-columns: repeat(auto-fit, minmax(250px, 450px));
+    }
+
+    footer .logo {
+        font-size: 32px;
+    }
+
+    .footer-col a {
+        font-size: 14px;
+    }
+
+    .footer-copyright {
+        font-size: 14px;
     }
 }

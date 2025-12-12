@@ -37,19 +37,19 @@ header .logo {
     font-size: 2rem;
     font-weight: 800;
     text-decoration: none;
-    
+
 }
 
 .logo-part.console {
     color: rgba(75, 150, 225, 0.8);
-    text-shadow: 
+    text-shadow:
         0 2px 4px rgba(0, 0, 0, 0.2),
         0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .logo-part.hub {
     color: rgba(255, 255, 255, 1);
-    text-shadow: 
+    text-shadow:
         0 2px 4px rgba(0, 0, 0, 0.2),
         0 0 10px rgba(255, 255, 255, 0.4);
 }
@@ -113,7 +113,7 @@ header .burger-icon {
 header .burger-icon .hamburger {
     position: relative;
     display: block;
-    width: 30px; 
+    width: 30px;
     height: 2px;
     background-color: rgba(255, 255, 255, 1);
     transition: background-color 0.3s ease;
@@ -124,7 +124,7 @@ header .burger-icon .hamburger::after {
     content: '';
     position: absolute;
     display: block;
-    width: 30px; 
+    width: 30px;
     height: 2px;
     background-color: rgba(255, 255, 255, 1);
     transition: transform 0.5s ease;
@@ -205,7 +205,7 @@ header .mobile-menu ul {
 }
 
 .hero .branding p {
-    color:rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
     font-family: var(--font-ui);
     font-weight: 800;
     font-size: 34px;
@@ -215,14 +215,14 @@ header .mobile-menu ul {
     text-decoration: none;
     background: linear-gradient(135deg, #0011ff, #00c8ff);
     color: rgba(255, 255, 255, 1);
-    font-family: var(--font-ui); 
+    font-family: var(--font-ui);
     font-weight: 600;
     font-size: 24px;
     border-radius: 24px;
     padding: 15px 40px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     letter-spacing: 0.5px;
-    display: inline-block; 
+    display: inline-block;
     position: relative;
     overflow: hidden;
 }
@@ -231,22 +231,20 @@ header .mobile-menu ul {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%; 
+    left: -200%;
     width: 200%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
     transform: rotate(-50deg);
     pointer-events: none;
 }
 
 .hero .branding .hero-btn:hover::before {
-    left: 200%; 
-    transition: left 1.2s ease-out; 
+    left: 200%;
+    transition: left 1.2s ease-out;
 }
 
 .section-header {
@@ -255,7 +253,7 @@ header .mobile-menu ul {
     font-weight: 800;
     font-size: 32px;
     text-align: center;
-    text-shadow: 
+    text-shadow:
         0 0 10px rgba(38, 119, 200, 0.6),
         0 0 20px rgba(38, 119, 200, 0.4),
         0 0 30px rgba(70, 130, 220, 0.3);
@@ -306,7 +304,7 @@ header .mobile-menu ul {
     transform: scale(1.1);
 }
 
-.popular-products .card .text-img p { 
+.popular-products .card .text-img p {
     font-family: var(--font-heading);
     font-weight: 700;
     color: rgba(255, 255, 255, 0.85);
@@ -315,7 +313,7 @@ header .mobile-menu ul {
     margin-top: 10px;
 }
 
-.popular-products .card a { 
+.popular-products .card a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -329,12 +327,12 @@ header .mobile-menu ul {
     transition: all 0.2s ease-in-out;
 }
 
-.popular-products .card a:hover { 
+.popular-products .card a:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
 }
 
-.popular-products .card a:active { 
+.popular-products .card a:active {
     transform: scale(0.95);
 }
 
@@ -373,16 +371,14 @@ header .mobile-menu ul {
     left: -200px;
     right: -200px;
     bottom: -200px;
-    background: linear-gradient(
-        135deg,
-        #ff0000,
-        #ff7f00,
-        #ffff00,
-        #00ff00,
-        #00ffff,
-        #0000ff,
-        #8b00ff
-    );
+    background: linear-gradient(135deg,
+            #ff0000,
+            #ff7f00,
+            #ffff00,
+            #00ff00,
+            #00ffff,
+            #0000ff,
+            #8b00ff);
     animation: rotateCard 4s linear infinite;
     z-index: 1;
     border-radius: 12px;
@@ -391,8 +387,13 @@ header .mobile-menu ul {
 }
 
 @keyframes rotateCard {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .promotions .promotions-list .promotions-card-back .promotions-card {
@@ -413,16 +414,16 @@ header .mobile-menu ul {
     padding: 20px;
     color: #fff;
     font-family: var(--font-heading);
-    background: rgba(6, 16, 28, 0.7); 
+    background: rgba(6, 16, 28, 0.7);
     border-radius: 8px;
-    backdrop-filter: blur(5px); 
+    backdrop-filter: blur(5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     gap: 1rem;
 }
 
 .header-promotions-card {
     margin: 0;
-}   
+}
 
 .promotions-btn {
     display: flex;
@@ -466,7 +467,7 @@ header .mobile-menu ul {
 
 .gamer-event-card {
     background: rgba(6, 16, 28, 0.85);
-    backdrop-filter: blur(6px); 
+    backdrop-filter: blur(6px);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -483,7 +484,7 @@ header .mobile-menu ul {
 .gamer-event-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6),
-                0 0 16px rgba(38, 119, 200, 0.3);
+        0 0 16px rgba(38, 119, 200, 0.3);
 }
 
 .gamer-event-card .event-content img {
@@ -512,7 +513,7 @@ header .mobile-menu ul {
 
 .gamer-event-card .event-date .date-label {
     font-size: 12px;
-    color: #5a90d4; 
+    color: #5a90d4;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 800;
@@ -521,8 +522,71 @@ header .mobile-menu ul {
 
 .gamer-event-card .event-date .date-value {
     font-size: 16px;
-    font-weight: 700; 
-    color: #c0e0ff; 
+    font-weight: 700;
+    color: #c0e0ff;
     font-family: var(--font-ui);
-    text-shadow: 0 0 4px rgba(38, 119, 200, 0.4); 
+    text-shadow: 0 0 4px rgba(38, 119, 200, 0.4);
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    background-color: #020810;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #0c0cb3, #0a0abf);
+    box-shadow:
+        0 0 30px #0c0cb3,
+        0 0 30px #0c0cb3,
+        0 0 30px #0c0cb3,
+        0 0 30px #0c0cb3;
+    filter: blur(2px);
+    z-index: 1;
+}
+
+footer .logo {
+    font-size: 48px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-align: center;
+}
+
+.footer-column {
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.footer-col a {
+    text-decoration: none;
+    font-family: var(--font-ui);
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-family: var(--font-ui);
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
 }
