@@ -577,6 +577,8 @@ footer .logo {
 
 .footer-links {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -607,6 +609,7 @@ footer .logo {
 
 .footer-social {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 

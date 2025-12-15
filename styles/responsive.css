@@ -61,22 +61,6 @@
         padding: 20px;
     }
 
-    .footer-column {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        font-size: 14px;
-    }
-
-    .footer-social  {
-        flex-direction: column;
-        font-size: 14px;
-    }
-
     .footer-contact {
         flex-direction: column;
         gap: 0.1rem;
@@ -95,12 +79,12 @@
     }
 
     .hero .branding .hero-btn {
-        font-size: 20px;
-        padding: 10px 30px;
+        font-size: 16px;
+        padding: 10px 20px;
     }
 
     .hero .logo span {
-        font-size: 36px;
+        font-size: 34px;
     }
 
     .hero .branding p {
@@ -118,5 +102,22 @@
 
     footer .logo {
         font-size: 32px;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+        padding: 2px;
+    }
+
+    .footer-social a {
+        font-size: 14px;
+    }
+
+    .footer-contact {
+        font-size: 12px;
+    }
+
+    .footer-copyright {
+        font-size: 12px;
     }
 }
