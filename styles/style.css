@@ -887,3 +887,86 @@ footer .logo {
 .btn-add-to-cart:active {
     transform: scale(0.98);
 }
+
+/*Стили страницы о нас*/
+.page-about-us {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #031833;
+    padding-top: 200px;
+    padding-bottom: 50px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+}
+
+.content-block {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    gap: 3rem;
+    background: rgba(15, 20, 35, 0.6);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(65, 105, 225, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(65, 105, 225, 0.4);
+}
+
+.content-text {
+    width: 60%;
+    color: #e0e0e0;
+    line-height: 1.6;
+    font-family: var(--font-ui);
+}
+
+.content-block img {
+    width: 40%;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content-block img:hover {
+    transform: scale(1.02) rotate(0.5deg);
+}
+
+.content-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.content-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #4d9cff, #6a5eff);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(77, 156, 255, 0.6);
+}
+
+.content-desc {
+    font-size: 1.05rem;
+    color: #b0b0b0;
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-weight: 400;
+}
