@@ -7,6 +7,18 @@
     .hero .gamepad {
         display: none;
     }
+
+    .catalog-filter {
+        width: 30%;
+    }
+
+    .catalog-products {
+        width: 70%;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.5rem;
+    }
+
+
 }
 
 /** Сенсорные устройства **/
@@ -35,6 +47,43 @@
     .popular-products .card a {
         font-size: 16px;
         padding: 10px;
+    }
+
+    .page-catalog {
+        padding-top: 140px;
+    }
+
+    .catalog-filter {
+        width: 35%;
+    }
+
+    .catalog-products {
+        width: 65%;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .product-card {
+        padding: 10px;
+        gap: 0.5rem;
+    }
+
+    .product-info {
+        gap: 0.1rem;
+    }
+
+    .product-name {
+        font-size: 20px;
+    }
+
+    .product-price {
+        font-size: 18px;
+    }
+
+    .btn-add-to-cart {
+        width: 100%;
+        padding: 6px 10px;
+        font-size: 16px;
     }
 }
 
@@ -65,6 +114,54 @@
         flex-direction: column;
         gap: 0.1rem;
         font-size: 14px;
+    }
+
+    .page-catalog {
+        padding-top: 130px;
+    }
+
+    .catalog-filter {
+        width: 100%;
+    }
+
+    .catalog {
+        flex-direction: column;
+    }
+
+    .catalog-filter p {
+        font-size: 12px;
+    }
+
+    .filter-price input {
+        font-size: 12px;
+    }
+
+    .filter-checkbox-label {
+        font-size: 12px;
+    }
+
+    .catalog-filter {
+        gap: 0.5rem;
+    }
+
+    .filter-group {
+        gap: 0.3rem;
+    }
+
+    .filter-checkbox {
+        gap: 6px;
+    }
+
+    .filter-apply-btn {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+    .catalog-products {
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.5rem;
     }
 }
 
@@ -119,5 +216,37 @@
 
     .footer-copyright {
         font-size: 12px;
+    }
+
+    .page-catalog {
+        padding-top: 120px;
+    }
+
+    .catalog-products {
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .product-card {
+        min-height: 200px;
+    }
+
+    .product-card img {
+        max-width: 70%;
+    }
+
+    .product-name {
+        font-size: 16px;
+    }
+
+    .product-price {
+        font-size: 14px;
+    }
+
+    .btn-add-to-cart {
+        width: 100%;
+        padding: 4px 6px;
+        font-size: 14px;
     }
 }
