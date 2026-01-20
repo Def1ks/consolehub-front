@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSOLEHUB</title>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-part console">CONSOLE</span>
+            <span class="logo-part hub">HUB</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="about-us.html">О нас</a></li>
+                <li><a href="profile.html" class="mobile-a" class="active-page">Профиль</a></li>
+                <li><a href="#" class="mobile-a">Корзина</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="profile.html">
+                <svg fill="#000000" height="50px" width="50px" viewBox="0 0 24 24" class="active-page">
+                    <path
+                        d="M8,12h1v1h6v-1h1v-1h1V5h-1V4h-1V3H9v1H8v1H7v6h1V12z M9,7h1V6h1V5h2v1h1v1h1v2h-1v1h-1v1h-2v-1h-1V9H9V7z" />
+                    <polygon
+                        points="19,16 19,15 18,15 18,14 6,14 6,15 5,15 5,16 4,16 4,21 6,21 6,18 7,18 7,17 8,17 8,16 16,16 16,17 17,17 17,18 18,18 18,21 20,21 20,16" />
+                </svg>
+            </a>
+            <a href="#">
+                <svg fill="#000000" height="50px" width="50px" viewBox="0 0 24 24">
+                    <rect x="8" y="19" width="3" height="3" />
+                    <rect x="17" y="19" width="3" height="3" />
+                    <path
+                        d="M7,6V4H6V2H2v2h2v2h1v3h1v3h1v3h1v2h12v-2h1v-3h1V6H7z M20,10h-1v3h-1v2h-8v-1v-1H9v-3H8V8h12V10z" />
+                </svg>
+            </a>
+        </div>
+        <div class="burger-icon">
+            <span class="hamburger"></span>
+        </div>
+    </header>
+    <main class="profile-page">
+        <div class="profile-content">
+            <div class="profile-info">
+                <h2>Профиль</h2>
+                <img src="img/console.webp" alt="Картинка профиля" class="profile-avatar">
+                <div class="profile-details">
+                    <h3>Александр Перков</h3>
+                    <p>alexperk@mail.ru</p>
+                </div>
+                <hr>
+                <div class="profile-actions">
+                    <button>Редактировать профиль</button>
+                    <button>Выход</button>
+                </div>
+            </div>
+            <div class="order-history">
+                <h2>История заказов</h2>
+
+                <!-- Заказ #10428 -->
+                <div class="order-item" data-order-id="#10428" data-date="12 января 2026" data-amount="5 890 ₽"
+                    data-status="Доставлен" data-status-class="order-status--completed"
+                    data-address="г. Уфа, ул. Ленина, д. 25, кв. 12">
+                    <div class="order-header">
+                        <span class="order-id">#10428</span>
+                        <span class="order-date">12 января 2026</span>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-row">
+                            <span class="order-label">Сумма:</span>
+                            <span class="order-value">5 890 ₽</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Статус:</span>
+                            <span class="order-status order-status--completed">Доставлен</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Адрес:</span>
+                            <span class="order-value">г. Уфа, ул. Ленина, д. 25, кв. 12</span>
+                        </div>
+                    </div>
+                    <button class="order-details-btn">Подробнее</button>
+                </div>
+
+                <!-- Заказ #11228 -->
+                <div class="order-item" data-order-id="#11228" data-date="13 января 2026" data-amount="52 890 ₽"
+                    data-status="В процессе" data-status-class="order-status--pending"
+                    data-address="г. Уфа, ул. Ленина, д. 25, кв. 12">
+                    <div class="order-header">
+                        <span class="order-id">#11228</span>
+                        <span class="order-date">13 января 2026</span>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-row">
+                            <span class="order-label">Сумма:</span>
+                            <span class="order-value">52 890 ₽</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Статус:</span>
+                            <span class="order-status order-status--pending">В процессе</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Адрес:</span>
+                            <span class="order-value">г. Уфа, ул. Ленина, д. 25, кв. 12</span>
+                        </div>
+                    </div>
+                    <button class="order-details-btn">Подробнее</button>
+                </div>
+
+                <!-- Заказ #11038 -->
+                <div class="order-item" data-order-id="#11038" data-date="10 января 2026" data-amount="32 690 ₽"
+                    data-status="Отменен" data-status-class="order-status--cancelled"
+                    data-address="г. Уфа, ул. Ленина, д. 25, кв. 12">
+                    <div class="order-header">
+                        <span class="order-id">#11038</span>
+                        <span class="order-date">10 января 2026</span>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-row">
+                            <span class="order-label">Сумма:</span>
+                            <span class="order-value">32 690 ₽</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Статус:</span>
+                            <span class="order-status order-status--cancelled">Отменен</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Адрес:</span>
+                            <span class="order-value">г. Уфа, ул. Ленина, д. 25, кв. 12</span>
+                        </div>
+                    </div>
+                    <button class="order-details-btn">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Подвал -->
+    <footer>
+        <div class="logo">
+            <span class="logo-part console">CONSOLE</span>
+            <span class="logo-part hub">HUB</span>
+        </div>
+        <!-- Логотип -->
+        <div class="footer-column">
+            <!-- Навигация -->
+            <div class="footer-links footer-col">
+                <a href="#">Главная</a>
+                <a href="#">Каталог</a>
+                <a href="#">О нас</a>
+                <a href="#">Корзина</a>
+                <a href="#">Профиль</a>
+            </div>
+            <!-- Соцсети -->
+            <div class="footer-social footer-col">
+                <a href="#" aria-label="Telegram">TG</a>
+                <a href="#" aria-label="VK">VK</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <!-- Контакты -->
+        <div class="footer-contact footer-col">
+            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+            <a href="mailto:support@consolehub.ru">support@consolehub.ru</a>
+        </div>
+        <!-- Копирайт -->
+        <div class="footer-copyright">
+            © 2025 CONSOLEHUB. Все права защищены.
+        </div>
+    </footer>
+    <!-- Модальное окно -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>Заказ <span id="modal-order-id"></span></h3>
+            <p><strong>Дата:</strong> <span id="modal-date"></span></p>
+            <p><strong>Сумма:</strong> <span id="modal-amount"></span></p>
+            <p><strong>Статус:</strong> <span id="modal-status"></span></p>
+            <p><strong>Адрес:</strong> <span id="modal-address"></span></p>
+        </div>
+    </div>
+    <div id="editProfileModal" class="modal">
+    <div class="modal-content edit-profile-modal">
+        <span class="modal-close">&times;</span>
+        <h3>Редактировать профиль</h3>
+
+        <!-- Блок аватара -->
+         <div class="avatar-upload">
+            <label for="avatarInput" class="avatar-preview">
+                <img id="avatarPreview" src="https://via.placeholder.com/120">
+            </label>
+            <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+            <p class="avatar-hint">Нажмите, чтобы выбрать фото</p>
+        </div>
+
+        <form id="profileForm">
+            <div class="form-group">
+                <label for="firstName">Имя</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Фамилия</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Почта</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn-primary">Сохранить</button>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
