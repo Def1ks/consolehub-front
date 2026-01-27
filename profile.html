@@ -57,97 +57,13 @@
     </header>
     <main class="profile-page">
         <div class="profile-content">
-            <div class="profile-info">
-                <h2>Профиль</h2>
-                <img src="img/console.webp" alt="Картинка профиля" class="profile-avatar">
-                <div class="profile-details">
-                    <h3>Александр Перков</h3>
-                    <p>alexperk@mail.ru</p>
-                </div>
-                <hr>
-                <div class="profile-actions">
-                    <button>Редактировать профиль</button>
-                    <button>Выход</button>
-                </div>
+            <!-- Этот блок будет переключаться -->
+            <div id="authOrProfile">
+                <!-- Сюда будет подставляться: форма входа, регистрация или профиль -->
             </div>
-            <div class="order-history">
-                <h2>История заказов</h2>
 
-                <!-- Заказ #10428 -->
-                <div class="order-item" data-order-id="#10428" data-date="12 января 2026" data-amount="5 890 ₽"
-                    data-status="Доставлен" data-status-class="order-status--completed"
-                    data-address="г. Уфа, ул. Ленина, д. 25, кв. 12">
-                    <div class="order-header">
-                        <span class="order-id">#10428</span>
-                        <span class="order-date">12 января 2026</span>
-                    </div>
-                    <div class="order-details">
-                        <div class="order-row">
-                            <span class="order-label">Сумма:</span>
-                            <span class="order-value">5 890 ₽</span>
-                        </div>
-                        <div class="order-row">
-                            <span class="order-label">Статус:</span>
-                            <span class="order-status order-status--completed">Доставлен</span>
-                        </div>
-                        <div class="order-row">
-                            <span class="order-label">Адрес:</span>
-                            <span class="order-value">г. Уфа, ул. Ленина, д. 25, кв. 12</span>
-                        </div>
-                    </div>
-                    <button class="order-details-btn">Подробнее</button>
-                </div>
-
-                <!-- Заказ #11228 -->
-                <div class="order-item" data-order-id="#11228" data-date="13 января 2026" data-amount="52 890 ₽"
-                    data-status="В процессе" data-status-class="order-status--pending"
-                    data-address="г. Уфа, ул. Ленина, д. 25, кв. 12">
-                    <div class="order-header">
-                        <span class="order-id">#11228</span>
-                        <span class="order-date">13 января 2026</span>
-                    </div>
-                    <div class="order-details">
-                        <div class="order-row">
-                            <span class="order-label">Сумма:</span>
-                            <span class="order-value">52 890 ₽</span>
-                        </div>
-                        <div class="order-row">
-                            <span class="order-label">Статус:</span>
-                            <span class="order-status order-status--pending">В процессе</span>
-                        </div>
-                        <div class="order-row">
-                            <span class="order-label">Адрес:</span>
-                            <span class="order-value">г. Уфа, ул. Ленина, д. 25, кв. 12</span>
-                        </div>
-                    </div>
-                    <button class="order-details-btn">Подробнее</button>
-                </div>
-
-                <!-- Заказ #11038 -->
-                <div class="order-item" data-order-id="#11038" data-date="10 января 2026" data-amount="32 690 ₽"
-                    data-status="Отменен" data-status-class="order-status--cancelled"
-                    data-address="г. Уфа, ул. Ленина, д. 25, кв. 12">
-                    <div class="order-header">
-                        <span class="order-id">#11038</span>
-                        <span class="order-date">10 января 2026</span>
-                    </div>
-                    <div class="order-details">
-                        <div class="order-row">
-                            <span class="order-label">Сумма:</span>
-                            <span class="order-value">32 690 ₽</span>
-                        </div>
-                        <div class="order-row">
-                            <span class="order-label">Статус:</span>
-                            <span class="order-status order-status--cancelled">Отменен</span>
-                        </div>
-                        <div class="order-row">
-                            <span class="order-label">Адрес:</span>
-                            <span class="order-value">г. Уфа, ул. Ленина, д. 25, кв. 12</span>
-                        </div>
-                    </div>
-                    <button class="order-details-btn">Подробнее</button>
-                </div>
-            </div>
+            <!-- История заказов (показывается ТОЛЬКО после входа) -->
+            <div class="order-history" id="orders-container" style="display: none;"></div>
         </div>
     </main>
     <!-- Подвал -->
@@ -188,43 +104,41 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <h3>Заказ <span id="modal-order-id"></span></h3>
-            <p><strong>Дата:</strong> <span id="modal-date"></span></p>
-            <p><strong>Сумма:</strong> <span id="modal-amount"></span></p>
-            <p><strong>Статус:</strong> <span id="modal-status"></span></p>
-            <p><strong>Адрес:</strong> <span id="modal-address"></span></p>
+            <div id="modal-order-items" class="modal-order-items"></div>
         </div>
     </div>
+
     <div id="editProfileModal" class="modal">
-    <div class="modal-content edit-profile-modal">
-        <span class="modal-close">&times;</span>
-        <h3>Редактировать профиль</h3>
+        <div class="modal-content edit-profile-modal">
+            <span class="modal-close">&times;</span>
+            <h3>Редактировать профиль</h3>
 
-        <!-- Блок аватара -->
-         <div class="avatar-upload">
-            <label for="avatarInput" class="avatar-preview">
-                <img id="avatarPreview" src="https://via.placeholder.com/120">
-            </label>
-            <input type="file" id="avatarInput" accept="image/*" style="display: none;">
-            <p class="avatar-hint">Нажмите, чтобы выбрать фото</p>
+            <!-- Блок аватара -->
+            <div class="avatar-upload">
+                <label for="avatarInput" class="avatar-preview">
+                    <img id="avatarPreview" src="https://via.placeholder.com/120">
+                </label>
+                <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                <p class="avatar-hint">Нажмите, чтобы выбрать фото</p>
+            </div>
+
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="firstName">Имя</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Фамилия</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Почта</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="btn-primary">Сохранить</button>
+            </form>
         </div>
-
-        <form id="profileForm">
-            <div class="form-group">
-                <label for="firstName">Имя</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Фамилия</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Почта</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <button type="submit" class="btn-primary">Сохранить</button>
-        </form>
     </div>
-</div>
 </body>
 
 </html>

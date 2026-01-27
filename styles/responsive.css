@@ -22,7 +22,6 @@
         padding-top: 150px;
     }
 
-
 }
 
 /** Сенсорные устройства **/
@@ -363,12 +362,6 @@
 
     .order-status {
         font-size: 8px;
-    }
-
-    #orderModal .modal-content {
-        width: 75%;
-        margin: 50% auto;
-        padding: 1rem;
     }
 
     #orderModal h3 {

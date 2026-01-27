@@ -974,6 +974,7 @@ footer .logo {
 /*Стили страницы профиля*/
 .profile-page {
     width: 100vw;
+    min-height: 100vh;
     background-color: #031428;
     padding-top: 150px;
     padding-bottom: 50px;
@@ -990,7 +991,7 @@ footer .logo {
 }
 
 .profile-info {
-    width: 30%;
+    width: 100%;
     background-color: #051a2e;
     border-radius: 12px;
     border: 1px solid rgba(0, 180, 255, 0.4); 
@@ -1076,6 +1077,53 @@ footer .logo {
     background-color: rgba(0, 180, 255, 0.1);
     box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
     color: #ffffff;
+}
+
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #01062b;
+  border-radius: 12px;
+  border: 1px solid #0b6363;
+  font-family: var(--font-ui);
+}
+
+.auth-form h2 {
+  text-align: center;
+  color: #00ffff;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #444;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 4px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 15px;
+  color: #aaa;
+}
+
+.auth-switch a {
+  color: #00ffff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .order-history {
@@ -1194,91 +1242,6 @@ footer .logo {
     color: #80eaff;
 }
 
-/* Стиль модального окна */
-#orderModal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s ease-out;
-}
-
-#orderModal .modal-content {
-    background: linear-gradient(145deg, #0a0f1c, #0d1424);
-    border: 1px solid #00ffff;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 10% auto;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    animation: slideIn 0.4s ease-out;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#orderModal .modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2rem;
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    z-index: 1001;
-}
-
-#orderModal .modal-close:hover {
-    color: #00ffff;
-}
-
-#orderModal h3 {
-    color: #00ffff;
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    text-align: center;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-    letter-spacing: 1px;
-}
-
-#orderModal p {
-    margin: 0.75rem 0;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-#orderModal p strong {
-    color: #00ffff;
-    font-weight: 600;
-}
-
-#orderModal #modal-status {
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
-    display: inline-block;
-    min-width: 80px;
-    text-align: center;
-    margin-left: 5px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
 #editProfileModal {
     display: none;
     position: fixed;
@@ -1289,7 +1252,6 @@ footer .logo {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s ease-out;
 }
 
 .edit-profile-modal {
@@ -1306,7 +1268,6 @@ footer .logo {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: relative;
-    animation: slideIn 0.4s ease-out;
 }
 
 .edit-profile-modal h3 {
@@ -1402,7 +1363,7 @@ footer .logo {
 .btn-primary {
     width: 100%;
     padding: 0.65rem;
-    background: #00ffff;
+    background: #0bcbed;
     color: #000;
     border: none;
     border-radius: 6px;
@@ -1433,12 +1394,151 @@ footer .logo {
     color: #00ffff;
 }
 
+/* Стиль модального окна */
+#orderModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+#orderModal .modal-content {
+    background: linear-gradient(145deg, #0a0f1c, #0d1424);
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-family: var(--font-ui);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes slideIn {
-    from { transform: translateY(-30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+#orderModal .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 1001;
+}
+
+#orderModal .modal-close:hover {
+    color: #00ffff;
+}
+
+#orderModal h3 {
+    color: #00ffff;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+#orderModal p {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#orderModal p strong {
+    color: #00ffff;
+    font-weight: 600;
+}
+
+#orderModal #modal-status {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.modal-order-items {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #2a3a4a;
+}
+
+.modal-order-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #2a3a4a;
+}
+
+.modal-order-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.modal-order-item-image {
+    width: 60px;
+    height: 60px;
+    background-color: #141e2b;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #66aacc;
+    font-size: 12px;
+    border: 1px solid #004455;
+}
+
+.modal-order-item-info {
+    flex: 1;
+}
+
+.modal-order-item-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.modal-order-item-qty {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.modal-order-item-price {
+    font-weight: bold;
+    color: #00ffff; 
 }
