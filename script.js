@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const burgerIcon = document.querySelector('.burger-icon');
+  const nav = document.querySelector('nav');
 
+  if (burgerIcon && nav) {
+    burgerIcon.addEventListener('click', function () {
+      this.classList.toggle('active-burger');
+      nav.classList.toggle('mobile-menu');
+    });
+  }
   // === ЗАГРУЗКА ДАННЫХ ===
   let mockUsers = JSON.parse(localStorage.getItem('mockUsers')) || [
     {
@@ -39,6 +47,163 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
+  // --- ТОВАРЫ ---
+  const mockProducts = [
+    {
+      id: 1,
+      name: "PlayStation 5",
+      price: 39990,
+      image: "img/products-img/playstation5.webp",
+      brand: "PlayStation",
+      category: "Консоли",
+      description: "Мощнейшая игровая консоль нового поколения с потрясающей графикой и ультра-быстрым SSD.",
+      features: ["Процессор: AMD Zen 2", "GPU: AMD RDNA 2", "RAM: 16 GB GDDR6", "SSD: 825 GB"],
+      reviewsList: [
+        { userName: "Александр Перков", rating: 5, date: "2026-01-15", text: "Отличная консоль! Быстрая загрузка, шикарная графика. Очень доволен покупкой." },
+        { userName: "Иван Сидоров", rating: 4, date: "2026-01-10", text: "Хорошая приставка, но немного шумит под нагрузкой. В остальном — топ!" },
+        { userName: "Екатерина Морозова", rating: 5, date: "2026-01-22", text: "DualSense — это отдельный кайф. Тактильная отдача реально меняет впечатление от игр." },
+        { userName: "Дмитрий Лебедев", rating: 5, date: "2026-01-30", text: "Покупал в подарок сыну — теперь он не вылезает из Spider-Man. SSD работает молниеносно." },
+        { userName: "Анна Волкова", rating: 4, date: "2026-02-01", text: "Красивая, мощная, но занимает много места. И да, найти в продаже — всё ещё проблема." },
+        { userName: "Сергей Никитин", rating: 5, date: "2026-02-03", text: "Лучшее вложение в развлечения за последние годы. Horizon Forbidden West — просто восторг." }
+      ]
+    },
+    {
+      id: 2,
+      name: "Xbox Series X",
+      price: 37990,
+      image: "img/products-img/xboxseriesx.webp",
+      brand: "Xbox",
+      category: "Консоли",
+      description: "Самая мощная консоль Xbox с поддержкой 4K и потрясающим 3D-аудио.",
+      features: ["Процессор: AMD Zen 2", "GPU: AMD RDNA 2", "RAM: 16 GB GDDR6", "SSD: 1 TB"],
+      reviewsList: [
+        { userName: "Мария Кузнецова", rating: 5, date: "2026-01-18", text: "Игры запускаются мгновенно, интерфейс удобный. Советую всем геймерам!" },
+        { userName: "Артём Громов", rating: 5, date: "2026-01-25", text: "Тихая, холодная, мощная. Идеальная консоль для тех, кто ценит стабильность." },
+        { userName: "Ольга Федорова", rating: 4, date: "2026-01-28", text: "Хорошо, но эксклюзивов мало. Зато Game Pass — просто находка." },
+        { userName: "Роман Павлов", rating: 5, date: "2026-02-02", text: "Форм-фактор как у ПК — ставится вертикально или горизонтально. Очень практично." },
+        { userName: "Наталья Соколова", rating: 4, date: "2026-02-04", text: "Покупала ради обратной совместимости — старые игры работают идеально." },
+        { userName: "Владимир Егоров", rating: 5, date: "2026-02-06", text: "Запускаю Forza Horizon 5 в 4K/60fps без лагов. Просто космос!" },
+        { userName: "Юлия Максимова", rating: 4, date: "2026-02-07", text: "Нравится, но хотелось бы больше русской локализации в некоторых играх." }
+      ]
+    },
+    {
+      id: 3,
+      name: "Nintendo Switch OLED",
+      price: 25990,
+      image: "img/products-img/nintendoswitcholed.webp",
+      brand: "Nintendo",
+      category: "Консоли",
+      description: "Улучшенная портативная консоль с большим OLED-дисплеем и продленным временем работы.",
+      features: ["Дисплей: 7\" OLED", "RAM: 4 GB LPDDR4", "Память: 64 GB", "Время работы: до 9 часов"],
+      reviewsList: [
+        { userName: "Анна Петрова", rating: 5, date: "2026-01-20", text: "Идеально для поездок! Экран яркий, батарея держится долго." },
+        { userName: "Дмитрий Орлов", rating: 4, date: "2026-01-05", text: "Хорошо, но хотелось бы больше памяти из коробки." },
+        { userName: "Полина Смирнова", rating: 5, date: "2026-01-12", text: "Animal Crossing на OLED — это отдельное удовольствие. Цвета сочные!" },
+        { userName: "Максим Воронцов", rating: 5, date: "2026-01-29", text: "Брал для семьи — все играют: жена, дети, даже родители. Универсальная штука." },
+        { userName: "Евгений Крылов", rating: 4, date: "2026-02-01", text: "Отличная портативка, но Joy-Con всё ещё могут терять связь при активной игре." },
+        { userName: "Алёна Зайцева", rating: 5, date: "2026-02-03", text: "Подключил к телевизору — и дома, и в дороге. Очень удобно!" },
+        { userName: "Игорь Швец", rating: 5, date: "2026-02-05", text: "OLED-экран того стоит. Особенно в темных сценах Zelda." },
+        { userName: "Ксения Романова", rating: 4, date: "2026-02-08", text: "Красивая, но чехол лучше брать сразу — легко царапается." }
+      ]
+    },
+    {
+      id: 4,
+      name: "DualSense Wireless Controller",
+      price: 5990,
+      image: "img/products-img/dualsensecontroller.webp",
+      brand: "PlayStation",
+      category: "Аксессуары",
+      description: "Официальный беспроводной контроллер для PlayStation 5 с тактильной отдачей и адаптивными триггерами.",
+      features: ["Тактильная отдача", "Адаптивные триггеры", "Встроенный микрофон", "Аккумулятор: 15 часов"],
+      reviewsList: [
+        { userName: "Александр Перков", rating: 5, date: "2026-01-18", text: "Лучший геймпад, который у меня был. Тактильная отдача — как будто ты внутри игры." },
+        { userName: "Виктория Лукина", rating: 4, date: "2026-01-24", text: "Отличный контроллер, но заряжается только через USB-C, без Bluetooth-зарядки." },
+        { userName: "Станислав Медведев", rating: 5, date: "2026-01-30", text: "Адаптивные триггеры в Returnal — это что-то нереальное. Чувствуешь каждое натяжение." },
+        { userName: "Анастасия Горбунова", rating: 4, date: "2026-02-02", text: "Красивый, удобный, но батарея садится быстрее, чем у DualShock 4." },
+        { userName: "Глеб Фомин", rating: 5, date: "2026-02-04", text: "Использую даже на ПК — поддержка в Steam отличная." },
+        { userName: "Татьяна Ершова", rating: 4, date: "2026-02-06", text: "Хорош, но белый цвет быстро пачкается. Берите чёрный, если не любите ухаживать." }
+      ]
+    },
+    {
+      id: 5,
+      name: "PULSE 3D Wireless Headset",
+      price: 8990,
+      image: "img/products-img/pulse3dheadset.webp",
+      brand: "PlayStation",
+      category: "Аксессуары",
+      description: "Беспроводные наушники для PS5 с объемным 3D-звуком Tempest.",
+      features: ["3D-аудио Tempest", "Беспроводное подключение", "Микрофон с шумоподавлением", "Аккумулятор: 12 часов"],
+      reviewsList: [
+        { userName: "Александр Перков", rating: 5, date: "2026-02-01", text: "Звук просто космос! Особенно в играх с 3D-аудио." },
+        { userName: "Илья Козлов", rating: 4, date: "2026-01-20", text: "Хороший звук, но давят на уши при долгой игре." },
+        { userName: "Дарья Селиванова", rating: 5, date: "2026-01-25", text: "Микрофон действительно с шумоподавлением — друзья говорят, что слышат меня чётко." },
+        { userName: "Никита Жуков", rating: 4, date: "2026-01-28", text: "Беспроводные — это удобно, но заряжать каждый день надоело." },
+        { userName: "Елена Беляева", rating: 5, date: "2026-02-03", text: "Отлично передаёт направление звука. В Ratchet & Clank слышно, откуда летит враг!" },
+        { userName: "Арсений Морозов", rating: 4, date: "2026-02-05", text: "Цена высокая, но за качество можно заплатить." },
+        { userName: "Вера Комарова", rating: 5, date: "2026-02-07", text: "Подключил — и всё работает. Без драйверов, без настроек. Просто включи и играй." }
+      ]
+    },
+    {
+      id: 6,
+      name: "Xbox Wireless Controller",
+      price: 5490,
+      image: "img/products-img/xboxwirelesscontroller.webp",
+      brand: "Xbox",
+      category: "Аксессуары",
+      description: "Классический беспроводной контроллер для Xbox с поддержкой Bluetooth.",
+      features: ["Bluetooth", "Аккумулятор: до 40 часов", "Настройка с помощью Xbox Accessories", "Компактный дизайн"],
+      reviewsList: [
+        { userName: "Михаил Соколов", rating: 5, date: "2026-01-15", text: "Эргономика — эталон. Удобно лежит в руках даже при долгих сессиях." },
+        { userName: "Алина Воробьёва", rating: 4, date: "2026-01-22", text: "Отличный геймпад, но кнопки D-pad могли бы быть точнее." },
+        { userName: "Даниил Фролов", rating: 5, date: "2026-01-27", text: "Работает и на ПК, и на Android. Очень универсальный." },
+        { userName: "Софья Ковалёва", rating: 4, date: "2026-02-01", text: "Батарея держится долго, но AA-элементы — не самый современный выбор." },
+        { userName: "Антон Мельников", rating: 5, date: "2026-02-04", text: "Лучший контроллер для шутеров. Триггеры — мечта." },
+        { userName: "Валерия Денисова", rating: 4, date: "2026-02-06", text: "Красивый, но скользкий. Советую силиконовый чехол." }
+      ]
+    },
+    {
+      id: 7,
+      name: "Pro Controller",
+      price: 7990,
+      image: "img/products-img/procontroller.webp",
+      brand: "Nintendo",
+      category: "Аксессуары",
+      description: "Полноразмерный контроллер Pro для Nintendo Switch с точными джойстиками и вибрацией HD Rumble.",
+      features: ["HD Rumble", "Долгий срок службы батареи", "Джой-кон не нужен", "Поддержка Amiibo"],
+      reviewsList: [
+        { userName: "Артём Сазонов", rating: 5, date: "2026-01-10", text: "Идеален для Zelda и Metroid. Джойстики не люфтят, в отличие от Joy-Con." },
+        { userName: "Елизавета Новикова", rating: 5, date: "2026-01-18", text: "Батарея держится почти неделю! Очень доволен покупкой." },
+        { userName: "Павел Королёв", rating: 4, date: "2026-01-25", text: "Отличный контроллер, но цена завышена. Хотя качество того стоит." },
+        { userName: "Маргарита Соловьёва", rating: 5, date: "2026-01-30", text: "HD Rumble в Mario Kart — это отдельное удовольствие. Чувствуешь каждую кочку!" },
+        { userName: "Руслан Гусев", rating: 5, date: "2026-02-02", text: "Подключается мгновенно. Использую только его, Joy-Con убрал в коробку." },
+        { userName: "Оксана Белова", rating: 4, date: "2026-02-05", text: "Хорош, но не хватает подсветки кнопок в темноте." },
+        { userName: "Игорь Панов", rating: 5, date: "2026-02-08", text: "Лучший контроллер для Switch. Точка." }
+      ]
+    },
+    {
+      id: 8,
+      name: "The Legend of Zelda: Tears of the Kingdom",
+      price: 5490,
+      image: "img/products-img/zeldatearsofthekingdom.webp",
+      brand: "Nintendo",
+      category: "Игры",
+      description: "Продолжение культовой игры The Legend of Zelda: Breath of the Wild. Исследуйте обновленный Хайруль!",
+      features: ["Новый геймплей", "Создание предметов", "Полеты на самодельных транспортах", "Огромный открытый мир"],
+      reviewsList: [
+        { userName: "Александр Перков", rating: 5, date: "2026-02-05", text: "Одна из лучших игр всех времён! Свобода творчества и исследования — на высшем уровне." },
+        { userName: "Вера Степанова", rating: 5, date: "2026-01-20", text: "Провёл 100+ часов и всё ещё нахожу новые механики. Гениально!" },
+        { userName: "Лев Титов", rating: 5, date: "2026-01-25", text: "Система создания — это прорыв. Сделал себе летающий танк из щита и вентилятора!" },
+        { userName: "Ангелина Кузнецова", rating: 5, date: "2026-01-28", text: "Сюжет трогательный, музыка великолепна, мир — живой. Обязательно к прохождению." },
+        { userName: "Тимур Абрамов", rating: 4, date: "2026-02-01", text: "Игра — шедевр, но иногда физика ломается, и конструкции ведут себя странно." },
+        { userName: "Нина Романова", rating: 5, date: "2026-02-03", text: "Даже мои дети (10 и 12 лет) часами строят свои летательные аппараты. Воспитательный эффект!" },
+        { userName: "Семён Захаров", rating: 5, date: "2026-02-06", text: "Лучше Breath of the Wild? Да. И это почти невозможно было улучшить." },
+        { userName: "Дарья Морозова", rating: 5, date: "2026-02-08", text: "Каждый раз удивляюсь, как Nintendo умудряется делать такие игры на Switch." }
+      ]
+    }
+  ];
+
+  localStorage.setItem('mockProducts', JSON.stringify(mockProducts));
+
   // === ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ===
   function formatDate(isoDate) {
     const date = new Date(isoDate);
@@ -49,6 +214,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  function formatPriceForCatalog(amount) {
+    return amount.toLocaleString('ru-RU') + ' Р';
+  }
+
   function formatPrice(amount) {
     return amount.toLocaleString('ru-RU') + ' ₽';
   }
@@ -56,9 +225,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function getStatusInfo(status) {
     switch (status) {
       case 'completed': return { text: 'Доставлен', class: 'order-status--completed' };
-      case 'pending':   return { text: 'В процессе', class: 'order-status--pending' };
+      case 'pending': return { text: 'В процессе', class: 'order-status--pending' };
       case 'cancelled': return { text: 'Отменен', class: 'order-status--cancelled' };
-      default:          return { text: 'Неизвестно', class: '' };
+      default: return { text: 'Неизвестно', class: '' };
     }
   }
 
@@ -94,6 +263,66 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
+  // --- ТОВАРЫ ---
+  function renderProducts(productsToRender) {
+    const container = document.querySelector('.catalog-products');
+    if (!container) {
+      console.error("Контейнер для товаров '.catalog-products' не найден.");
+      return;
+    }
+
+    container.innerHTML = '';
+
+    if (!productsToRender || productsToRender.length === 0) {
+      container.innerHTML = '<p>Товары по заданным параметрам не найдены.</p>';
+      return;
+    }
+
+    productsToRender.forEach(product => {
+      const cardElement = document.createElement('div');
+      cardElement.className = 'product-card';
+
+      cardElement.innerHTML = `
+        <div class="product-info">
+          <img src="${product.image}" alt="${product.name}">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-price">${formatPriceForCatalog(product.price)}</p>
+        </div>
+        <button class="btn-add-to-cart">В корзину</button>
+      `;
+
+      cardElement.addEventListener('click', function (e) {
+        if (!e.target.classList.contains('btn-add-to-cart')) {
+          window.location.href = `product.html?id=${product.id}`;
+        }
+      });
+
+      container.appendChild(cardElement);
+    });
+  }
+
+  // --- ТОВАРЫ ---
+  function applyFilters() {
+    const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+    const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+
+    const selectedBrands = Array.from(document.querySelectorAll('#brandFilter input[name="brand"]:checked'))
+      .map(cb => cb.value);
+
+    const selectedCategories = Array.from(document.querySelectorAll('#categoryFilter input[name="category"]:checked'))
+      .map(cb => cb.value);
+
+    const filteredProducts = mockProducts.filter(product => {
+      const priceMatch = product.price >= minPrice && product.price <= maxPrice;
+      const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+
+      return priceMatch && brandMatch && categoryMatch;
+    });
+
+    renderProducts(filteredProducts);
+  }
+
   // === РЕНДЕР: ФОРМА ВХОДА ===
   function renderLoginForm() {
     const html = `
@@ -116,8 +345,12 @@ document.addEventListener('DOMContentLoaded', function () {
         </form>
       </div>
     `;
-    document.getElementById('authOrProfile').innerHTML = html;
-    document.getElementById('orders-container').style.display = 'none';
+    const authContainer = document.getElementById('authOrProfile');
+    if (authContainer) {
+      authContainer.innerHTML = html;
+      const ordersContainer = document.getElementById('orders-container');
+      if (ordersContainer) ordersContainer.style.display = 'none';
+    }
   }
 
   // === РЕНДЕР: ФОРМА РЕГИСТРАЦИИ ===
@@ -150,8 +383,12 @@ document.addEventListener('DOMContentLoaded', function () {
         </form>
       </div>
     `;
-    document.getElementById('authOrProfile').innerHTML = html;
-    document.getElementById('orders-container').style.display = 'none';
+    const authContainer = document.getElementById('authOrProfile');
+    if (authContainer) {
+      authContainer.innerHTML = html;
+      const ordersContainer = document.getElementById('orders-container');
+      if (ordersContainer) ordersContainer.style.display = 'none';
+    }
   }
 
   // === РЕНДЕР: ПРОФИЛЬ ===
@@ -171,8 +408,12 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
     `;
-    document.getElementById('authOrProfile').innerHTML = html;
-    document.getElementById('orders-container').style.display = 'block';
+    const authContainer = document.getElementById('authOrProfile');
+    if (authContainer) {
+      authContainer.innerHTML = html;
+      const ordersContainer = document.getElementById('orders-container');
+      if (ordersContainer) ordersContainer.style.display = 'block';
+    }
   }
 
   // === РЕНДЕР: ИСТОРИЯ ЗАКАЗОВ ===
@@ -235,13 +476,24 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // === ИНИЦИАЛИЗАЦИЯ ===
-  const currentUser = getCurrentUser();
-  if (currentUser) {
-    renderProfile(currentUser);
-    renderOrderHistory(getOrdersByUserId(currentUser.id));
+  const catalogContainer = document.querySelector('.catalog-products');
+  if (catalogContainer) {
+    renderProducts(mockProducts);
+
+    const applyButton = document.getElementById('applyFiltersButton');
+    if (applyButton) {
+      applyButton.addEventListener('click', applyFilters);
+    }
   } else {
-    renderLoginForm();
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      renderProfile(currentUser);
+      renderOrderHistory(getOrdersByUserId(currentUser.id));
+    } else {
+      renderLoginForm();
+    }
   }
+
 
   // === ДЕЛЕГИРОВАНИЕ СОБЫТИЙ ===
   document.addEventListener('click', function (e) {
