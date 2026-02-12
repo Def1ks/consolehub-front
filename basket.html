@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* === УНИКАЛЬНЫЙ СТИЛЬ ДЛЯ КОРЗИНЫ === */
+        main#main-basket {
+            min-height: 100vh;
+            min-width: 100vw;
+            background: #0a0f1d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 60px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .basket-container {
+            max-width: 800px;
+            width: 95%;
+            margin: 0 auto;
+            padding-top: 200px;
+            flex: 1;
+        }
+
+        .basket-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            text-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+        }
+
+        .basket-message {
+            text-align: center;
+            padding: 80px 20px;
+            font-size: 18px;
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+
+        .basket-message a {
+            color: #00f3ff;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .basket-message a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .basket-message a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .basket-items {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .basket-item {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            border-radius: 16px;
+            background: #0d1426;
+            border: 1px solid #2a354d;
+            box-shadow: 0 0 16px rgba(0, 243, 255, 0.1);
+        }
+
+        .basket-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+            border: 1px solid #2a354d;
+        }
+
+        .basket-item-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .basket-item-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e6ecef;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .basket-item-price {
+            color: #00f3ff;
+            font-weight: 700;
+            font-size: 18px;
+            text-shadow: 0 0 6px rgba(0, 243, 255, 0.4);
+        }
+
+        .basket-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .btn-qty {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #0a1225;
+            border: 1px solid #2a354d;
+            color: #00f3ff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-qty:hover {
+            background: #0c1a35;
+            transform: scale(1.1);
+        }
+
+        .qty-value {
+            min-width: 24px;
+            text-align: center;
+            font-weight: 600;
+            color: #e6ecef;
+        }
+
+        .btn-remove {
+            background: transparent;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-remove:hover {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff4444;
+        }
+
+        .basket-total {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        /* === УНИКАЛЬНЫЕ КНОПКИ КОРЗИНЫ (БЕЗ КОНФЛИКТОВ) === */
+        .btn-checkout,
+        .btn-continue-shopping {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #00c8ff, #007bff);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 200, 255, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-checkout:hover,
+        .btn-continue-shopping:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 200, 255, 0.5);
+            background: linear-gradient(135deg, #00f3ff, #00a0e6);
+        }
+
+        /* Для ссылки — убираем стандартное подчёркивание */
+        .btn-continue-shopping {
+            text-decoration: none !important;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .basket-container {
+                padding-top: 140px;
+            }
+
+            .basket-title {
+                font-size: 26px;
+            }
+
+            .basket-item {
+                padding: 18px;
+                flex-direction: column;
+            }
+
+            .basket-item img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .basket-total {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-part console">CONSOLE</span>
+            <span class="logo-part hub">HUB</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="about-us.html">О нас</a></li>
+                <li><a href="profile.html" class="mobile-a">Профиль</a></li>
+                <li><a href="basket.html" class="mobile-a active-page">Корзина</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="profile.html">
+                <svg fill="#000000" height="50px" width="50px" viewBox="0 0 24 24">
+                    <path
+                        d="M8,12h1v1h6v-1h1v-1h1V5h-1V4h-1V3H9v1H8v1H7v6h1V12z M9,7h1V6h1V5h2v1h1v1h1v2h-1v1h-1v1h-2v-1h-1V9H9V7z" />
+                    <polygon
+                        points="19,16 19,15 18,15 18,14 6,14 6,15 5,15 5,16 4,16 4,21 6,21 6,18 7,18 7,17 8,17 8,16 16,16 16,17 17,17 17,18 18,18 18,21 20,21 20,16" />
+                </svg>
+            </a>
+            <a href="basket.html">
+                <svg fill="#000000" height="50px" width="50px" viewBox="0 0 24 24" class="active-page">
+                    <rect x="8" y="19" width="3" height="3" />
+                    <rect x="17" y="19" width="3" height="3" />
+                    <path
+                        d="M7,6V4H6V2H2v2h2v2h1v3h1v3h1v3h1v2h12v-2h1v-3h1V6H7z M20,10h-1v3h-1v2h-8v-1v-1H9v-3H8V8h12V10z" />
+                </svg>
+            </a>
+        </div>
+        <div class="burger-icon">
+            <span class="hamburger"></span>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main id="main-basket">
+        <div class="basket-container">
+            <h1 class="basket-title">Ваша корзина</h1>
+            <div id="basketContent">
+                <!-- Сюда будет подставляться контент -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="logo">
+            <span class="logo-part console">CONSOLE</span>
+            <span class="logo-part hub">HUB</span>
+        </div>
+        <div class="footer-column">
+            <div class="footer-links footer-col">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="about-us.html">О нас</a>
+                <a href="basket.html">Корзина</a>
+                <a href="profile.html">Профиль</a>
+            </div>
+            <div class="footer-social footer-col">
+                <a href="#" aria-label="Telegram">TG</a>
+                <a href="#" aria-label="VK">VK</a>
+                <a href="#" aria-label="YouTube">YT</a>
+            </div>
+        </div>
+        <div class="footer-contact footer-col">
+            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+            <a href="mailto:support@consolehub.ru">support@consolehub.ru</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 CONSOLEHUB. Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        function getCurrentUser() {
+            const userStr = localStorage.getItem('currentUser');
+            return userStr ? JSON.parse(userStr) : null;
+        }
+
+        function formatPrice(amount) {
+            return amount.toLocaleString('ru-RU') + ' ₽';
+        }
+
+        function renderBasket() {
+            const currentUser = getCurrentUser();
+            const basketContent = document.getElementById('basketContent');
+
+            if (!currentUser) {
+                basketContent.innerHTML = `
+                    <div class="basket-message">
+                        <p>Войдите в аккаунт, чтобы использовать корзину.</p>
+                        <a href="profile.html">Перейти к авторизации</a>
+                    </div>
+                `;
+                return;
+            }
+
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const products = JSON.parse(localStorage.getItem('mockProducts')) || [];
+
+            if (cartItems.length === 0) {
+                basketContent.innerHTML = `
+                    <div class="basket-message">
+                        <p>Ваша корзина пуста.</p>
+                        <a href="catalog.html">Перейти в каталог</a>
+                    </div>
+                `;
+                return;
+            }
+
+            let total = 0;
+            let itemsHtml = '';
+
+            cartItems.forEach(item => {
+                const product = products.find(p => p.id === item.productId);
+                if (!product) return;
+
+                const itemTotal = product.price * item.quantity;
+                total += itemTotal;
+
+                itemsHtml += `
+                    <div class="basket-item" data-product-id="${product.id}">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="basket-item-info">
+                            <h3 class="basket-item-name">${product.name}</h3>
+                            <div class="basket-item-price">${formatPrice(product.price)}</div>
+                            <div class="basket-item-controls">
+                                <button class="btn-qty minus" data-action="minus">−</button>
+                                <span class="qty-value">${item.quantity}</span>
+                                <button class="btn-qty plus" data-action="plus">+</button>
+                                <button class="btn-remove" data-action="remove">🗑️ Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            basketContent.innerHTML = `
+                <div class="basket-items">
+                    ${itemsHtml}
+                </div>
+                <div class="basket-total">
+                    Итого: ${formatPrice(total)}
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button id="checkoutBtn" class="btn-checkout">Перейти к оплате</button>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="catalog.html" class="btn-continue-shopping">Продолжить покупки</a>
+                </div>
+            `;
+
+            // Обработчики для кнопок количества
+            document.querySelectorAll('.btn-qty').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const action = this.dataset.action;
+                    const itemEl = this.closest('.basket-item');
+                    const productId = Number(itemEl.dataset.productId);
+                    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                    const itemIndex = cartItems.findIndex(item => item.productId === productId);
+                    if (itemIndex === -1) return;
+
+                    if (action === 'plus') {
+                        cartItems[itemIndex].quantity += 1;
+                    } else if (action === 'minus') {
+                        cartItems[itemIndex].quantity -= 1;
+                        if (cartItems[itemIndex].quantity <= 0) {
+                            cartItems.splice(itemIndex, 1);
+                        }
+                    }
+
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    renderBasket();
+                });
+            });
+
+            // Обработчики для удаления
+            document.querySelectorAll('.btn-remove').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const itemEl = this.closest('.basket-item');
+                    const productId = Number(itemEl.dataset.productId);
+                    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                    cartItems = cartItems.filter(item => item.productId !== productId);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    renderBasket();
+                });
+            });
+
+            // Кнопка "Оплатить"
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', function () {
+                    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                    if (cartItems.length === 0) {
+                        alert('Ваша корзина пуста!');
+                        return;
+                    }
+                    alert('✅ Оплата прошла успешно!\n\nЭто демо-версия. В реальном магазине вы бы перешли к платёжной системе.');
+                    localStorage.removeItem('cartItems');
+                    renderBasket();
+                });
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerIcon = document.querySelector('.burger-icon');
+            const nav = document.querySelector('nav');
+
+            if (burgerIcon && nav) {
+                burgerIcon.addEventListener('click', function () {
+                    this.classList.toggle('active-burger');
+                    nav.classList.toggle('mobile-menu');
+                });
+            }
+
+            renderBasket();
+        });
+    </script>
+</body>
+
+</html>

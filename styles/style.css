@@ -126,6 +126,7 @@ header a:hover svg {
 .active-page {
   color: rgba(130, 210, 240, 1);
   text-shadow: 0 0 4px rgba(75, 150, 225, 0.5);
+  fill: rgba(130, 210, 240, 1);
 }
 
 .mobile-a {

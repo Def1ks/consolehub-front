@@ -30,7 +30,7 @@
                 <li><a href="catalog.html" class="active-page">Каталог</a></li>
                 <li><a href="about-us.html">О нас</a></li>
                 <li><a href="profile.html" class="mobile-a">Профиль</a></li>
-                <li><a href="#" class="mobile-a">Корзина</a></li>
+                <li><a href="basket.html" class="mobile-a">Корзина</a></li>
             </ul>
         </nav>
         <div class="header-actions">
@@ -42,7 +42,7 @@
                         points="19,16 19,15 18,15 18,14 6,14 6,15 5,15 5,16 4,16 4,21 6,21 6,18 7,18 7,17 8,17 8,16 16,16 16,17 17,17 17,18 18,18 18,21 20,21 20,16" />
                 </svg>
             </a>
-            <a href="#">
+            <a href="basket.html">
                 <svg fill="#000000" height="50px" width="50px" viewBox="0 0 24 24">
                     <rect x="8" y="19" width="3" height="3" />
                     <rect x="17" y="19" width="3" height="3" />
@@ -58,56 +58,56 @@
     <main class="page-catalog">
         <section class="catalog">
             <div class="catalog-filter">
-                <div class="filter-group">
-                    <p>Цена</p>
-                    <div class="filter-price">
-                        <input type="number" class="price-input min" placeholder="Мин." min="0">
-                        <span>—</span>
-                        <input type="number" class="price-input max" placeholder="Макс." min="0">
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <p>Бренд</p>
-                    <div class="filter-brand filter-style">
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="brand" value="xbox">
-                            <span class="filter-checkbox-mark"></span>
-                            <span class="filter-checkbox-label">Xbox</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="brand" value="playstation">
-                            <span class="filter-checkbox-mark"></span>
-                            <span class="filter-checkbox-label">PlayStation</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="brand" value="nintendo">
-                            <span class="filter-checkbox-mark"></span>
-                            <span class="filter-checkbox-label">Nintendo</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <p>Тип товара</p>
-                    <div class="filter-category filter-style">
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="console">
-                            <span class="filter-checkbox-mark"></span>
-                            <span class="filter-checkbox-label">Консоли</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="game">
-                            <span class="filter-checkbox-mark"></span>
-                            <span class="filter-checkbox-label">Игры</span>
-                        </label>
-                        <label class="filter-checkbox">
-                            <input type="checkbox" name="category" value="accessory">
-                            <span class="filter-checkbox-mark"></span>
-                            <span class="filter-checkbox-label">Аксессуары</span>
-                        </label>
-                    </div>
-                </div>
-                <button class="filter-apply-btn">Применить</button>
-            </div>
+    <div class="filter-group">
+        <p>Цена</p>
+        <div class="filter-price">
+            <input type="number" id="minPrice" class="price-input min" placeholder="Мин." min="0">
+            <span>—</span>
+            <input type="number" id="maxPrice" class="price-input max" placeholder="Макс." min="0">
+        </div>
+    </div>
+    <div class="filter-group">
+        <p>Бренд</p>
+        <div class="filter-brand filter-style">
+            <label class="filter-checkbox">
+                <input type="checkbox" name="brand" value="Xbox">
+                <span class="filter-checkbox-mark"></span>
+                <span class="filter-checkbox-label">Xbox</span>
+            </label>
+            <label class="filter-checkbox">
+                <input type="checkbox" name="brand" value="PlayStation">
+                <span class="filter-checkbox-mark"></span>
+                <span class="filter-checkbox-label">PlayStation</span>
+            </label>
+            <label class="filter-checkbox">
+                <input type="checkbox" name="brand" value="Nintendo">
+                <span class="filter-checkbox-mark"></span>
+                <span class="filter-checkbox-label">Nintendo</span>
+            </label>
+        </div>
+    </div>
+    <div class="filter-group">
+        <p>Тип товара</p>
+        <div class="filter-category filter-style">
+            <label class="filter-checkbox">
+                <input type="checkbox" name="category" value="Консоли">
+                <span class="filter-checkbox-mark"></span>
+                <span class="filter-checkbox-label">Консоли</span>
+            </label>
+            <label class="filter-checkbox">
+                <input type="checkbox" name="category" value="Игры">
+                <span class="filter-checkbox-mark"></span>
+                <span class="filter-checkbox-label">Игры</span>
+            </label>
+            <label class="filter-checkbox">
+                <input type="checkbox" name="category" value="Аксессуары">
+                <span class="filter-checkbox-mark"></span>
+                <span class="filter-checkbox-label">Аксессуары</span>
+            </label>
+        </div>
+    </div>
+    <button id="applyFiltersButton" class="filter-apply-btn">Применить</button>
+</div>
             <div class="catalog-products">
                
             </div>
