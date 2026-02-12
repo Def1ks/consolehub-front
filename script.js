@@ -348,20 +348,6 @@ function getNextOrderId() {
     return ids.length ? Math.max(...ids) + 1 : 10000;
 }
 
-function createDemoOrderForUser(userId, firstName) {
-    return {
-        id: getNextOrderId(),
-        userId: userId,
-        date: new Date().toISOString().split('T')[0],
-        total: 2990,
-        status: "completed",
-        address: "г. Уфа, ул. Ленина, д. 25, кв. 12",
-        items: [
-            { name: `Добро пожаловать, ${firstName}!`, price: 2990, qty: 1 }
-        ]
-    };
-}
-
 // === ФУНКЦИИ КАТАЛОГА ===
 function renderProducts(productsToRender) {
     const container = document.querySelector('.catalog-products');
@@ -449,38 +435,16 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             id: 1,
             firstName: "Александр",
+            lastName: "Перков",
             email: "alexperk@mail.ru",
             password: "123456",
-            role: "admin" 
+            avatar: "img/default.webp",
+            role: "admin"
         }
     ];
 
-    mockOrders = JSON.parse(localStorage.getItem('mockOrders')) || [
-        {
-            id: 10428,
-            userId: 1,
-            date: "2026-01-12",
-            total: 5890,
-            status: "completed",
-            address: "г. Уфа, ул. Ленина, д. 25, кв. 12",
-            items: [
-                { name: "Игровая мышь Logitech G502", price: 3290, qty: 1 },
-                { name: "Коврик для мыши SteelSeries QcK", price: 1200, qty: 1 },
-                { name: "Наушники HyperX Cloud II", price: 1400, qty: 1 }
-            ]
-        },
-        {
-            id: 11228,
-            userId: 1,
-            date: "2026-01-13",
-            total: 58890,
-            status: "pending",
-            address: "г. Уфа, ул. Ленина, д. 25, кв. 12",
-            items: [
-                { name: "Игровой ноутбук ASUS ROG Zephyrus G14", price: 58890, qty: 1 }
-            ]
-        }
-    ];
+    // ПУСТОЙ МАССИВ ЗАКАЗОВ — ТОЛЬКО РЕАЛЬНЫЕ!
+    mockOrders = JSON.parse(localStorage.getItem('mockOrders')) || [];
 
     localStorage.setItem('mockProducts', JSON.stringify(mockProducts));
 
@@ -552,16 +516,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (itemsContainer) {
                     itemsContainer.innerHTML = '';
                     order.items.forEach(product => {
+                        // Ищем товар по имени или ID (лучше по ID, но у вас в items нет id → используем name)
+                        const productData = mockProducts.find(p =>
+                            p.name === product.name ||
+                            p.id === (product.productId || 0)
+                        );
+
+                        const imgSrc = productData?.image || 'img/default.webp';
+
                         const itemEl = document.createElement('div');
                         itemEl.className = 'modal-order-item';
                         itemEl.innerHTML = `
-                          <div class="modal-order-item-image">🖼️</div>
-                          <div class="modal-order-item-info">
-                            <div class="modal-order-item-name">${product.name}</div>
-                            <div class="modal-order-item-qty">Кол-во: ${product.qty}</div>
-                            <div class="modal-order-item-price">${formatPrice(product.price)}</div>
-                          </div>
-                        `;
+                  <div class="modal-order-item-image" style="
+                      width: 48px;
+                      height: 48px;
+                      border-radius: 6px;
+                      overflow: hidden;
+                      flex-shrink: 0;
+                  ">
+                      <img src="${imgSrc}" alt="${product.name}" 
+                           style="width:100%;height:100%;object-fit:cover;">
+                  </div>
+                  <div class="modal-order-item-info">
+                    <div class="modal-order-item-name">${product.name}</div>
+                    <div class="modal-order-item-qty">Кол-во: ${product.qty}</div>
+                    <div class="modal-order-item-price">${formatPrice(product.price)}</div>
+                  </div>
+                `;
                         itemsContainer.appendChild(itemEl);
                     });
                 }
@@ -627,7 +608,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 avatar: 'img/default.webp'
             };
             mockUsers.push(newUser);
-            mockOrders.push(createDemoOrderForUser(newUser.id, newUser.firstName));
             localStorage.setItem('mockUsers', JSON.stringify(mockUsers));
             localStorage.setItem('mockOrders', JSON.stringify(mockOrders));
             localStorage.setItem('currentUser', JSON.stringify(newUser));
