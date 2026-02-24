@@ -516,7 +516,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (itemsContainer) {
                     itemsContainer.innerHTML = '';
                     order.items.forEach(product => {
-                        // Ищем товар по имени или ID (лучше по ID, но у вас в items нет id → используем name)
                         const productData = mockProducts.find(p =>
                             p.name === product.name ||
                             p.id === (product.productId || 0)
